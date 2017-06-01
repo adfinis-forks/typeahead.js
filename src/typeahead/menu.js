@@ -179,7 +179,7 @@ var Menu = (function() {
     },
 
     update: function update(query) {
-      var isValidUpdate = query !== this.query;
+      var isValidUpdate = query === "" || query !== this.query;
 
       // don't update if the query hasn't changed
       if (isValidUpdate) {
