@@ -388,7 +388,7 @@ var Typeahead = (function() {
 
       // update will return true when it's a new query and new suggestions
       // need to be fetched – in this case we don't want to move the cursor
-      cancelMove = this._minLengthMet() && this.menu.update(query);
+      cancelMove = this._minLengthMet() && this.menu.update(query, false);
 
       if (!cancelMove && !this.eventBus.before('cursorchange', payload)) {
         this.menu.setCursor($candidate);

@@ -178,8 +178,10 @@ var Menu = (function() {
       return $selectable.length ? $selectable : null;
     },
 
-    update: function update(query) {
-      var isValidUpdate = query === "" || query !== this.query;
+    update: function update(query, updateEmpty) {
+      updateEmpty = updateEmpty !== undefined ? updateEmpty : true
+
+      var isValidUpdate = (updateEmpty && query === "") || query !== this.query;
 
       // don't update if the query hasn't changed
       if (isValidUpdate) {

@@ -1871,8 +1871,9 @@
                 var $selectable = this._getSelectables().first();
                 return $selectable.length ? $selectable : null;
             },
-            update: function update(query) {
-                var isValidUpdate = query === "" || query !== this.query;
+            update: function update(query, updateEmpty) {
+                updateEmpty = updateEmpty !== undefined ? updateEmpty : true;
+                var isValidUpdate = updateEmpty && query === "" || query !== this.query;
                 if (isValidUpdate) {
                     this.query = query;
                     _.each(this.datasets, updateDataset);
@@ -2188,7 +2189,7 @@
                 $candidate = this.menu.selectableRelativeToCursor(delta);
                 data = this.menu.getSelectableData($candidate);
                 payload = data ? data.obj : null;
-                cancelMove = this._minLengthMet() && this.menu.update(query);
+                cancelMove = this._minLengthMet() && this.menu.update(query, false);
                 if (!cancelMove && !this.eventBus.before("cursorchange", payload)) {
                     this.menu.setCursor($candidate);
                     if (data) {
