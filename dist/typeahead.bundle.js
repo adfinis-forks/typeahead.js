@@ -2043,7 +2043,7 @@
                 var $selectable;
                 if ($selectable = this.menu.getActiveSelectable()) {
                     this.select($selectable);
-                } else if ($selectable = this.menu.getTopSelectable()) {
+                } else if (this.input.query && ($selectable = this.menu.getTopSelectable())) {
                     this.autocomplete($selectable) && $e.preventDefault();
                 }
             },
